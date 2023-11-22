@@ -46,4 +46,4 @@ console.log(Math.floor(Math.randon()* 10) + 1 );
 const min = 10
 const max = 20
 
-console.log(Math.floor(Math.random() * (max - min + 1)) + min)
+console.log(Math.floor(Math.random() * (max - min + 1)) + min)   // max value add because same as the Math.random output hence add this min or max values
