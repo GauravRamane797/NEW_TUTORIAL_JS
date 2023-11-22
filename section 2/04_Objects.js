@@ -103,8 +103,6 @@ const {courseInstructor: Instructor} = course
 //console.log(courseInstructor)
 console.log(Instructor);                    // output is ---> gaurav
 
-
-
 // # Destructring in React.js only one example
 
 const navbar = ({company}) => {
