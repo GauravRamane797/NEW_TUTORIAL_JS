@@ -41,4 +41,4 @@ let myTimeStamp = Date.now ()
 // console.log(newDate.getSeconds())                  // output --->   32
 // console.log(newDate.getMinutes())                  // output --->   55
 // console.log(newDate.getHours())                    // output --->   10
-// console.log(newDate.getUTCDate())                  // output --->   22
+// console.log(newDate.getUTCDate())                  // output --->   22  
