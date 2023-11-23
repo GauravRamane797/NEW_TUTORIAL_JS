@@ -103,6 +103,32 @@ const {courseInstructor: Instructor} = course
 //console.log(courseInstructor)
 console.log(Instructor);                    // output is ---> gaurav
 
+
+
+
+
+//        ----> OBJECT DESTRUCTURING <---                   //
+
+//let bioData1 = {
+//               name:'gaurav ramane', 
+//              address:'kolhapur',
+//              age:'24'}
+
+// let age = bioData1.name;
+// console.log(age);
+
+
+// let {name,address,age,Degree ='MCA'} = myBioData;
+// console.log(Degree);
+
+
+
+
+
+
+
+
+
 // # Destructring in React.js only one example
 
 const navbar = ({company}) => {

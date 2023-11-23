@@ -45,3 +45,21 @@ let score3 = 300
 
 console.log (Array.of(score1,score2,score3));               // output is [100, 200, 300]
 
+// <-------------------------------------------------------------------------------------->
+
+//                  --->  ARRAY DESTRUCTURING <---                 //
+
+// const myBioData = ['gaurav','sumit','bhagwan',25];
+
+
+//         let myFName = myBioData[0];
+//         let myLName = myBioData[2];
+//         let myAge = myBioData[3];
+// let [myFName,myLName, myAge]= myBioData;
+//      console.log(myFName);
+//      console.log(myLName);
+//      console.log(myAge);
+
+//              -- we can add values too---
+// let [myFName,myLName, myAge, myDegree ='MCS'] = myBioData;
+// console.log(myDegree);
