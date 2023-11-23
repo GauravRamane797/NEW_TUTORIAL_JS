@@ -75,6 +75,7 @@ const addTwo = function (num){
     return num + 2
 }
 
+
 console.log(addTwo(8) );             // output ---> 10
 
 
