@@ -6,7 +6,7 @@ function calculateCarPrice(...num1){
     return num1
 }
 
-console.log(calculateCarPrice(200, 300, 400))
+// console.log(calculateCarPrice(200, 300, 400))
 
 
 
@@ -19,7 +19,7 @@ console.log(calculateCarPrice(200, 300, 400))
 // ------# How to pass Rest operator in js function or multiple values are pass ...? ----
 
 function handleObject (anyobject){
-    console.log(`username is ${anyobject} and price is ${anyobject.price}`);
+    console.log(`username is ${anyobject.username} and price is ${anyobject.price}`);
 }
 
 
@@ -41,4 +41,6 @@ function returnSecondValue(getArray){
 }
 
 console.log(returnSecondValue(myNewArray));
-console.log(returnSecondValue([200, 400, 100, 600]));
+// console.log(returnSecondValue([200, 400, 100, 600]));
+
+
