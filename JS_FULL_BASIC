@@ -19,6 +19,120 @@ let name = "Gaurav";
 const age = 23;
 var city = "Pune";
 
+var vs let vs const (Complete Explanation)
+1️⃣ var (OLD – avoid using)
+🔹 Scope
+
+Function-scoped
+
+NOT block-scoped
+
+if (true) {
+  var city = "Pune";
+}
+console.log(city); // ✅ Pune (accessible outside block)
+
+🔹 Re-declaration (Allowed ❌)
+var x = 10;
+var x = 20; // ✅ No error (dangerous)
+
+🔹 Re-assignment (Allowed)
+var x = 10;
+x = 30; // ✅ allowed
+
+🔹 Hoisting
+
+Hoisted and initialized as undefined
+
+console.log(a); // undefined
+var a = 10;
+
+❌ Problems with var
+
+Can cause unexpected bugs
+
+No block scope
+
+Easily overwritten
+
+2️⃣ let (MODERN & RECOMMENDED)
+🔹 Scope
+
+Block-scoped
+
+if (true) {
+  let name = "Gaurav";
+}
+console.log(name); // ❌ Error (not accessible)
+
+🔹 Re-declaration (Not allowed ❌)
+let x = 10;
+let x = 20; // ❌ Error
+
+🔹 Re-assignment (Allowed)
+let x = 10;
+x = 20; // ✅ allowed
+
+🔹 Hoisting
+
+Hoisted but NOT initialized
+
+Lives in Temporal Dead Zone (TDZ)
+
+console.log(a); // ❌ ReferenceError
+let a = 10;
+
+✅ When to use let
+
+When the value will change
+
+Loop counters
+
+Conditional variables
+
+3️⃣ const (BEST & DEFAULT CHOICE ⭐)
+🔹 Scope
+
+Block-scoped (same as let)
+
+if (true) {
+  const age = 23;
+}
+console.log(age); // ❌ Error
+
+🔹 Re-declaration (Not allowed ❌)
+const x = 10;
+const x = 20; // ❌ Error
+
+🔹 Re-assignment (Not allowed ❌)
+const age = 23;
+age = 24; // ❌ Error
+
+🔹 IMPORTANT: Objects & Arrays with const
+
+You can modify, but cannot reassign.
+
+const user = { name: "Gaurav" };
+user.name = "Ramane"; // ✅ allowed
+
+user = {}; // ❌ Error
+
+🔹 Hoisting
+
+Same as let (TDZ)
+
+console.log(x); // ❌ Error
+const x = 10;
+
+✅ When to use const
+
+Default choice
+
+Objects, arrays, functions
+
+Values that should not be reassigned
+
+
 3️⃣ Data Types
 
 Definition:
