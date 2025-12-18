@@ -1,0 +1,358 @@
+🟢 PART 1: JavaScript Basics
+1️⃣ What is JavaScript?
+
+Definition:
+JavaScript is a programming language used to make web pages interactive and dynamic. It runs in browsers and servers.
+
+Example:
+
+console.log("Hello JavaScript");
+
+2️⃣ Variables
+
+Definition:
+Variables store data values.
+
+Example:
+
+let name = "Gaurav";
+const age = 23;
+var city = "Pune";
+
+3️⃣ Data Types
+
+Definition:
+Data types define the type of value stored.
+
+Example:
+
+let text = "Hello";      // string
+let number = 10;        // number
+let isActive = true;    // boolean
+let data = null;        // null
+let value;              // undefined
+
+🟢 PART 2: Operators
+4️⃣ Operators
+
+Definition:
+Operators perform operations on values.
+
+Example:
+
+let a = 10;
+let b = 5;
+
+console.log(a + b); // addition
+console.log(a > b); // comparison
+
+🟢 PART 3: Conditions
+5️⃣ if–else
+
+Definition:
+Used to execute code based on conditions.
+
+Example:
+
+let age = 18;
+
+if (age >= 18) {
+  console.log("Adult");
+} else {
+  console.log("Minor");
+}
+
+6️⃣ switch
+
+Definition:
+Used when multiple conditions depend on one value.
+
+Example:
+
+let day = "Monday";
+
+switch (day) {
+  case "Monday":
+    console.log("Start of week");
+    break;
+  default:
+    console.log("Other day");
+}
+
+🟢 PART 4: Loops
+7️⃣ for loop
+
+Definition:
+Used to repeat code multiple times.
+
+Example:
+
+for (let i = 1; i <= 5; i++) {
+  console.log(i);
+}
+
+8️⃣ while loop
+
+Example:
+
+let i = 1;
+while (i <= 3) {
+  console.log(i);
+  i++;
+}
+
+🟢 PART 5: Functions
+9️⃣ Function
+
+Definition:
+A function is a reusable block of code.
+
+Example:
+
+function greet(name) {
+  return "Hello " + name;
+}
+
+console.log(greet("Gaurav"));
+
+🔟 Arrow Function
+
+Definition:
+Shorter syntax for functions.
+
+Example:
+
+const add = (a, b) => a + b;
+console.log(add(5, 3));
+
+🟢 PART 6: Scope
+1️⃣1️⃣ Scope
+
+Definition:
+Scope defines where variables are accessible.
+
+Example:
+
+let x = 10;
+
+function test() {
+  let y = 5;
+  console.log(x); // accessible
+}
+
+🟢 PART 7: Closures ⭐
+1️⃣2️⃣ Closure
+
+Definition:
+A function that remembers variables from its outer function.
+
+Example:
+
+function outer() {
+  let count = 0;
+
+  return function inner() {
+    count++;
+    console.log(count);
+  };
+}
+
+const counter = outer();
+counter();
+counter();
+
+🟢 PART 8: Arrays
+1️⃣3️⃣ Array
+
+Definition:
+Stores multiple values in one variable.
+
+Example:
+
+let fruits = ["Apple", "Banana", "Mango"];
+console.log(fruits[1]);
+
+1️⃣4️⃣ Array Methods
+
+Example:
+
+let numbers = [1, 2, 3];
+
+numbers.push(4);
+numbers.pop();
+
+console.log(numbers);
+
+🟢 PART 9: Array Higher-Order Methods
+1️⃣5️⃣ map
+
+Definition:
+Transforms each element.
+
+Example:
+
+let nums = [1, 2, 3];
+let doubled = nums.map(n => n * 2);
+
+1️⃣6️⃣ filter
+
+Example:
+
+let nums = [1, 2, 3, 4];
+let even = nums.filter(n => n % 2 === 0);
+
+1️⃣7️⃣ reduce
+
+Example:
+
+let nums = [1, 2, 3];
+let sum = nums.reduce((a, b) => a + b, 0);
+
+🟢 PART 10: Objects
+1️⃣8️⃣ Object
+
+Definition:
+Stores data as key–value pairs.
+
+Example:
+
+let user = {
+  name: "Gaurav",
+  age: 23,
+  greet() {
+    console.log("Hello");
+  }
+};
+
+user.greet();
+
+🟢 PART 11: Destructuring
+1️⃣9️⃣ Destructuring
+
+Definition:
+Extract values easily.
+
+Example:
+
+const user = { name: "Gaurav", age: 23 };
+const { name, age } = user;
+
+🟢 PART 12: Spread & Rest
+2️⃣0️⃣ Spread Operator
+
+Example:
+
+let a = [1, 2];
+let b = [...a, 3, 4];
+
+2️⃣1️⃣ Rest Operator
+
+Example:
+
+function sum(...numbers) {
+  return numbers.reduce((a, b) => a + b);
+}
+
+🟢 PART 13: Async JavaScript
+2️⃣2️⃣ Callback
+
+Definition:
+Function passed as argument.
+
+Example:
+
+setTimeout(() => {
+  console.log("Done");
+}, 1000);
+
+2️⃣3️⃣ Promise
+
+Example:
+
+const promise = new Promise((resolve) => {
+  resolve("Success");
+});
+
+promise.then(console.log);
+
+2️⃣4️⃣ Async / Await ⭐
+
+Example:
+
+async function fetchData() {
+  return "Data loaded";
+}
+
+console.log(await fetchData());
+
+🟢 PART 14: DOM
+2️⃣5️⃣ DOM Manipulation
+
+Definition:
+JavaScript can change HTML elements.
+
+Example:
+
+document.getElementById("title").innerText = "Hello";
+
+🟢 PART 15: Classes & OOP
+2️⃣6️⃣ Class
+
+Example:
+
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+
+  greet() {
+    console.log("Hello " + this.name);
+  }
+}
+
+const p1 = new Person("Gaurav");
+p1.greet();
+
+🟢 PART 16: Error Handling
+2️⃣7️⃣ try / catch
+
+Example:
+
+try {
+  let x = y;
+} catch (error) {
+  console.log("Error caught");
+}
+
+🟢 PART 17: Modules
+2️⃣8️⃣ import / export
+
+Example:
+
+// math.js
+export const add = (a, b) => a + b;
+
+// main.js
+import { add } from "./math.js";
+
+🟢 PART 18: JavaScript in Backend (Node.js)
+2️⃣9️⃣ Node.js
+
+Definition:
+JavaScript runtime outside browser.
+
+Example:
+
+const fs = require("fs");
+fs.writeFileSync("test.txt", "Hello");
+
+🟢 PART 19: Best Practices
+3️⃣0️⃣ Clean Code
+
+Example:
+
+// Bad
+let a = 10;
+
+// Good
+let totalUsers = 10;
