@@ -147,18 +147,123 @@ let data = null;        // null
 let value;              // undefined
 
 🟢 PART 2: Operators
+
+
 4️⃣ Operators
 
 Definition:
 Operators perform operations on values.
 
+1️⃣ Arithmetic Operators
+
+Definition:
+Used to perform mathematical calculations.
+
+Operators:
++ - * / % ** ++ --
+
 Example:
 
 let a = 10;
-let b = 5;
+let b = 3;
 
-console.log(a + b); // addition
-console.log(a > b); // comparison
+console.log(a + b); // 13
+console.log(a % b); // 1
+console.log(a ** b); // 1000
+
+2️⃣ Assignment Operators
+
+Definition:
+Used to assign values to variables.
+
+Operators:
+= += -= *= /= %= **=
+
+Example:
+
+let x = 10;
+x += 5;  // x = 15
+x *= 2;  // x = 30
+
+3️⃣ Comparison Operators
+
+Definition:
+Used to compare two values and return true or false.
+
+Operators:
+== === != !== > < >= <=
+
+Example:
+
+console.log(5 == "5");   // true
+console.log(5 === "5"); // false
+
+4️⃣ Logical Operators
+
+Definition:
+Used to combine multiple conditions.
+
+Operators:
+&& || !
+
+Example:
+
+let age = 20;
+
+console.log(age > 18 && age < 30); // true
+
+5️⃣ Bitwise Operators (Advanced)
+
+Definition:
+Work at the binary (bit) level.
+
+Operators:
+& | ^ ~ << >> >>>
+
+Example:
+
+console.log(5 & 1); // 1
+
+6️⃣ String Operators
+
+Definition:
+Used to concatenate strings.
+
+Operators:
++ +=
+
+Example:
+
+let first = "Gaurav";
+let last = "Ramane";
+
+console.log(first + " " + last);
+
+7️⃣ Ternary (Conditional) Operator
+
+Definition:
+Short form of if-else.
+
+Syntax:
+condition ? value1 : value2
+
+Example:
+
+let result = age >= 18 ? "Adult" : "Minor";
+
+8️⃣ Type Operators
+
+Definition:
+Used to check data types or object relationships.
+
+Operators:
+typeof instanceof
+
+Example:
+
+console.log(typeof "Hello"); // string
+console.log([] instanceof Array); // true
+
 
 🟢 PART 3: Conditions
 5️⃣ if–else
@@ -368,6 +473,243 @@ function sum(...numbers) {
 }
 
 🟢 PART 13: Async JavaScript
+
+
+
+Asynchronous JavaScript (DETAILED)
+🔹 Why Async JavaScript Exists
+
+JavaScript is single-threaded, meaning it can do one task at a time.
+
+If JS waited for:
+
+API calls
+
+File reading
+
+Database queries
+
+👉 the entire app would freeze.
+
+Async JS allows long tasks to run in background without blocking the main thread.
+
+2️⃣2️⃣ Callback
+✅ Definition
+
+A callback is a function passed as an argument to another function and executed later, usually after an async task finishes.
+
+🔹 Basic Example
+function greet(name, callback) {
+  console.log("Hello " + name);
+  callback();
+}
+
+greet("Gaurav", () => {
+  console.log("Welcome!");
+});
+
+🔹 Real Async Example (setTimeout)
+setTimeout(() => {
+  console.log("Done");
+}, 1000);
+
+
+⏱️ JS says:
+
+“Wait 1 second”
+
+Then execute the callback
+
+🔹 Callback Flow (Internals)
+
+Function is registered
+
+Browser/Node handles timer
+
+After delay → callback enters callback queue
+
+Event loop pushes it to call stack
+
+❌ Callback Hell (Big Problem)
+
+Nested callbacks become unreadable.
+
+setTimeout(() => {
+  console.log("Step 1");
+
+  setTimeout(() => {
+    console.log("Step 2");
+
+    setTimeout(() => {
+      console.log("Step 3");
+    }, 1000);
+
+  }, 1000);
+
+}, 1000);
+
+
+❌ Hard to read
+❌ Hard to debug
+❌ Hard to handle errors
+
+❌ Error Handling in Callbacks
+function getData(callback) {
+  let error = true;
+
+  if (error) {
+    callback("Error occurred", null);
+  } else {
+    callback(null, "Data");
+  }
+}
+
+getData((err, data) => {
+  if (err) console.log(err);
+  else console.log(data);
+});
+
+⚠️ Problems with Callbacks
+
+Callback hell
+
+Inversion of control
+
+Difficult error handling
+
+2️⃣3️⃣ Promise
+✅ Definition
+
+A Promise represents a value that will be available now, later, or never.
+
+🔹 Promise States
+State	Meaning
+Pending	Initial state
+Fulfilled	Operation succeeded
+Rejected	Operation failed
+🔹 Creating a Promise
+const promise = new Promise((resolve, reject) => {
+  resolve("Success");
+});
+
+🔹 Consuming a Promise
+promise
+  .then(result => console.log(result))
+  .catch(error => console.log(error))
+  .finally(() => console.log("Done"));
+
+🔹 Real-World Example (API Simulation)
+function fetchUser() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve({ name: "Gaurav", role: "Developer" });
+    }, 1000);
+  });
+}
+
+fetchUser().then(user => console.log(user));
+
+🔹 Promise Chaining
+fetchUser()
+  .then(user => user.name)
+  .then(name => name.toUpperCase())
+  .then(console.log)
+  .catch(console.error);
+
+🔹 Promise Utility Methods ⭐
+Promise.all([p1, p2]);        // all succeed
+Promise.race([p1, p2]);      // first settled
+Promise.allSettled([p1, p2]); // success + failure
+Promise.any([p1, p2]);       // first success
+
+❌ Promise Problems
+
+Still complex chaining
+
+Nested .then() in big apps
+
+Harder readability
+
+2️⃣4️⃣ Async / Await ⭐⭐⭐
+✅ Definition
+
+async/await is syntactic sugar over promises, making async code look synchronous.
+
+🔹 Basic Example
+async function fetchData() {
+  return "Data loaded";
+}
+
+fetchData().then(console.log);
+
+
+👉 async function always returns a Promise
+
+🔹 Using await
+async function loadData() {
+  const data = await fetchData();
+  console.log(data);
+}
+
+loadData();
+
+🔹 Real API Example
+async function getUser() {
+  const response = await fetch("https://api.example.com/user");
+  const data = await response.json();
+  return data;
+}
+
+🔹 Error Handling with try / catch
+async function getData() {
+  try {
+    const res = await fetch("invalid-url");
+    const data = await res.json();
+    console.log(data);
+  } catch (error) {
+    console.log("Error:", error.message);
+  }
+}
+
+🔹 Parallel vs Sequential Execution
+❌ Slow (Sequential)
+await task1();
+await task2();
+
+✅ Fast (Parallel)
+const [a, b] = await Promise.all([task1(), task2()]);
+
+🧠 Internals: Event Loop (Simple)
+console.log("Start");
+
+setTimeout(() => console.log("Timeout"), 0);
+
+Promise.resolve().then(() => console.log("Promise"));
+
+console.log("End");
+
+Output:
+Start
+End
+Promise
+Timeout
+
+
+Why?
+
+Sync first
+
+Microtasks (Promises)
+
+Macrotasks (setTimeout)
+
+📊 Comparison Table
+Feature	Callback	Promise	Async/Await
+Readability	❌ Poor	⚠️ Medium	⭐ Best
+Error Handling	❌ Hard	Better	⭐ Easy
+Nesting	❌ High	Medium	⭐ Low
+Usage Today	Legacy	Common	⭐ Standard
+
 2️⃣2️⃣ Callback
 
 Definition:
@@ -470,3 +812,254 @@ let a = 10;
 
 // Good
 let totalUsers = 10;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+JavaScript Interview Questions & Answers
+
+(Simple words • Interview-ready)
+
+🧠 CORE CONCEPTS (VERY IMPORTANT)
+1️⃣ Why is JavaScript single-threaded?
+
+Answer:
+JavaScript runs one task at a time to avoid memory conflicts and make code predictable.
+Async tasks are handled using the event loop.
+
+2️⃣ What is the Event Loop?
+
+Answer:
+The event loop checks:
+
+Call stack
+
+Callback queue
+
+Microtask queue
+and decides what to execute next.
+
+3️⃣ What is the Call Stack?
+
+Answer:
+It keeps track of function execution order.
+
+4️⃣ What is the difference between microtask & macrotask?
+
+Answer:
+
+Microtask → Promises (then, await)
+
+Macrotask → setTimeout, setInterval
+
+👉 Microtasks run before macrotasks.
+
+🔁 ASYNC / AWAIT & PROMISES
+5️⃣ What happens if you don’t use await?
+
+Answer:
+The function continues executing without waiting for the Promise.
+
+6️⃣ Can we use await without async?
+
+Answer:
+No. await works only inside async functions
+(Except top-level await in modern JS).
+
+7️⃣ What is Promise chaining?
+
+Answer:
+Using multiple .then() calls to handle async steps.
+
+8️⃣ Difference between Promise.all and Promise.allSettled?
+
+Answer:
+
+Promise.all → fails if any Promise fails
+
+Promise.allSettled → waits for all results
+
+🔐 SCOPE, HOISTING & MEMORY
+9️⃣ What is hoisting?
+
+Answer:
+JavaScript moves variable and function declarations to the top before execution.
+
+🔟 Why does let not hoist like var?
+
+Answer:
+let is hoisted but stays in temporal dead zone until initialized.
+
+1️⃣1️⃣ What is the Temporal Dead Zone?
+
+Answer:
+The time between variable creation and initialization where it cannot be accessed.
+
+1️⃣2️⃣ What is garbage collection?
+
+Answer:
+JavaScript automatically removes unused variables from memory.
+
+🧩 CLOSURES (FAVORITE QUESTION)
+1️⃣3️⃣ Explain closures in simple words
+
+Answer:
+A closure is when a function remembers variables from its parent function even after execution.
+
+1️⃣4️⃣ Real-life use of closures?
+
+Answer:
+
+Counters
+
+Authentication
+
+Private variables
+
+State management
+
+🧠 this KEYWORD (TRICKY)
+1️⃣5️⃣ What is this?
+
+Answer:
+this refers to the object that calls the function.
+
+1️⃣6️⃣ Why this behaves differently in arrow functions?
+
+Answer:
+Arrow functions do not have their own this.
+They use this from the parent scope.
+
+1️⃣7️⃣ Difference between call, apply, bind?
+
+Answer:
+
+call → calls function immediately
+
+apply → same as call but takes array
+
+bind → returns a new function
+
+🧮 ARRAY & OBJECT DEEP QUESTIONS
+1️⃣8️⃣ What is shallow copy?
+
+Answer:
+Copies reference, not actual data.
+
+1️⃣9️⃣ What is deep copy?
+
+Answer:
+Copies actual data, not reference.
+
+2️⃣0️⃣ How to deep copy an object?
+
+Answer:
+
+JSON.parse(JSON.stringify(obj))
+
+
+(Works for simple objects)
+
+⚡ PERFORMANCE QUESTIONS
+2️⃣1️⃣ What is debouncing?
+
+Answer:
+Delays function execution until the action stops.
+
+2️⃣2️⃣ What is throttling?
+
+Answer:
+Limits how often a function runs.
+
+2️⃣3️⃣ Where are debounce & throttle used?
+
+Answer:
+
+Search input
+
+Scroll events
+
+Resize events
+
+🌐 DOM & EVENTS
+2️⃣4️⃣ What is event bubbling?
+
+Answer:
+Event moves from child → parent.
+
+2️⃣5️⃣ What is event capturing?
+
+Answer:
+Event moves from parent → child.
+
+2️⃣6️⃣ How to stop event bubbling?
+
+Answer:
+
+event.stopPropagation();
+
+📦 MODULES & ARCHITECTURE
+2️⃣7️⃣ What is modular programming?
+
+Answer:
+Splitting code into reusable files.
+
+2️⃣8️⃣ Difference between CommonJS & ES Modules?
+
+Answer:
+
+CommonJS → require
+
+ES Modules → import/export
+
+🧪 OUTPUT-BASED TRICKY QUESTIONS
+2️⃣9️⃣ Output?
+console.log(1);
+setTimeout(() => console.log(2), 0);
+Promise.resolve().then(() => console.log(3));
+console.log(4);
+
+
+✅ Answer:
+
+1
+4
+3
+2
+
+3️⃣0️⃣ Output?
+for (var i = 0; i < 3; i++) {
+  setTimeout(() => console.log(i), 1000);
+}
+
+
+✅ Answer:
+
+3
+3
+3
+
+
+Reason: var has function scope.
+
+🧠 REAL INTERVIEW QUESTIONS
+3️⃣1️⃣ Why choose JavaScript?
+
+Answer:
+It runs everywhere, supports async programming, and has a huge ecosystem.
+
+3️⃣2️⃣ What makes you a strong JavaScript developer?
+
+Answer:
+Understanding async behavior, closures, clean code, and real-world problem solving.
